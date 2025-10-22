@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            border: 1px solid #ccc;
+            padding: 30px;
+            margin: 20px;
+            width: 300px;
+        }
+        input{
+            margin: 5px;
+            padding: 8px;
+            width: 200px;
+        }
+        button{
+            margin: 10px;
+            padding: 8px 15px;
+        }
+        .hidden{
+            display: none;
+        }
+        .error{
+            color: red;
+            font-size: 14px;
+        }
+        .success{
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+      <div id="registerSection" class="container">
+    <h2>Register</h2>
+    <input type="text" id="regUsername" placeholder="Enter username"><br>
+    <input type="password" id="regPassword" placeholder="Enter password"><br>
+    <input type="number" id="regage" placeholder="Enter your age"><br>
+    <input type="text" id=" regdepartment" placeholder="Enter your department"><br>
+    <button onclick="register()">Register</button>
+    <p id="regMessage"></p>
+    <p>Already have an account? <a href="#" onclick="showSection('loginSection')">Login</a></p>
+  </div>
+
+  <div id="loginSection" class="container hidden">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Enter username"><br>
+    <input type="password" id="loginPassword" placeholder="Enter password"><br>
+    <button onclick="login()">Login</button>
+    <p id="loginMessage"></p>
+    <p>Don’t have an account? <a href="#" onclick="showSection('registerSection')">Register</a></p>
+  </div>
+
+  <div id="dashboardSection" class="container hidden">
+    <h2>Dashboard</h2>
+    <p id="welcome"></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.getElementById("registerSection").classList.add("hidden");
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("dashboardSection").classList.add("hidden");
+      document.getElementById(sectionId).classList.remove("hidden");
+    }
+    const user= [{name:"", password:"", age:"", department:""}];
+
+    function register() {
+      let username = document.getElementById("regUsername").value.trim();
+      let password = document.getElementById("regPassword").value.trim();
+      let message = document.getElementById("regMessage");
+
+      message.innerText = "";
+
+      if (username === "" || password === "") {
+        message.innerText = "All fields are required!";
+        message.className = "error";
+        return;
+      }
+
+      if (localStorage.getItem(username)) {
+        message.innerText = "User already exists!";
+        message.className = "error";
+      } else {
+        localStorage.setItem(username, password);
+        message.innerText = "✅ Registration successful!";
+        message.className = "success";
+      }
+    }
+
+    function login() {
+      let username = document.getElementById("loginUsername").value.trim();
+      let password = document.getElementById("loginPassword").value.trim();
+      let message = document.getElementById("loginMessage");
+
+      message.innerText = "";
+
+      if (username === "" || password === "") {
+        message.innerText = "All fields are required!";
+        message.className = "error";
+        return;
+      }
+
+      let storedPassword = localStorage.getItem(username);
+
+      if (storedPassword && storedPassword === password) {
+        localStorage.setItem("loggedInUser", username);
+        document.getElementById("welcome").innerText = "Hello, " + username + " 👋";
+        showSection("dashboardSection");
+      } else {
+        message.innerText = "❌ Invalid username or password!";
+        message.className = "error";
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      showSection("loginSection");
+    }
+
+    window.onload = function () {
+      let loggedInUser = localStorage.getItem("loggedInUser");
+      if (loggedInUser) {
+        document.getElementById("welcome").innerText = "Hello, " + loggedInUser + " 👋";
+        showSection("dashboardSection");
+      } else {
+        showSection("loginSection");
+      }
+    };
+  </script>
+
+</body>
+</html>
