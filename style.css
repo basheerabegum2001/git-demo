@@ -1,0 +1,101 @@
+/* ===== Global Layout ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Cards ===== */
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #0066ff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #004ee0;
+}
+
+.btn-danger {
+    background-color: #ff3b3b;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #d22f2f;
+}
+
+/* ===== Form Controls ===== */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 0 0.2rem rgba(0,102,255,0.1);
+}
+
+/* ===== Tables ===== */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+    background-color: #f1f5ff;
+}
+
+/* ===== Alerts ===== */
+.alert {
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* ===== Footer (Optional) ===== */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #777;
+    margin-top: 50px;
+}
