@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
     </div>
 
 <div style="text-align:center";>
- <h2 style="margin:80px 30px";>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
+ <h1 style="margin:80px 30px";>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
 
 <button type="submit" style="margin-left:20px";><a href="add_item.php">Add Item</a> </button> 
 <button type="submit"  style="margin-left:40px";><a href="view_items.php">View Items</a>  </button>
