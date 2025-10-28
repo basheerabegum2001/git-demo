@@ -30,7 +30,6 @@ $result = $conn->query("SELECT * FROM items");
 <?php endwhile; ?>
 </table>
 
-<a href="dashboard.php">Back to Dashboard</a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +39,9 @@ $result = $conn->query("SELECT * FROM items");
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <a href="dashboard.php">Back to Dashboard</a>
+
+    <button type="submit" class="logbtn"><a href="logout.php">Logout</a></button>
+
 </body>
 </html>
