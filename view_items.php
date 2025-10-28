@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) { header("Location: login.php"); exit(); }
 $result = $conn->query("SELECT * FROM items");
 ?>
 
-<h2>Item List</h2>
+<h2 style="text-align:center";>Stock List</h2>
 <table border="1">
 <tr>
     <th>ID</th>
