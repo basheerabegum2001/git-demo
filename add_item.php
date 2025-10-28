@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="text" name="name" placeholder="Item Name" required><br>
     <input type="number" name="quantity" placeholder="Quantity" required><br>
     <input type="number" step="0.01" name="price" placeholder="Price" required><br>
-    <button type="submit" name="add">Add Item</button>
+    <button type="submit" name="add" style="background:blue">Add Item</button>
 </form>
 
 <br>
