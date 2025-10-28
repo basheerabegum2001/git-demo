@@ -33,6 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
+    <div>
+       <button type="submit" class="logbtn"><a href="logout.php">Logout</a></button>
+    </div>
 
 <h2>Add New Stock Item</h2>
 
@@ -48,6 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
+
+
+
+
 
 
 
