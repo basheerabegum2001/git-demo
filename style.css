@@ -1,101 +1,244 @@
-/* ===== Global Layout ===== */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
+/* styles.css — Modern responsive admin/auth styles */
+
+/* ---------- Variables ---------- */
+:root{
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;      /* primary blue */
+  --accent-2: #06b6d4;    /* teal */
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(37,99,235,0.06);
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(18,24,40,0.08);
+  --maxw: 980px;
+  --pad: 1.25rem;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* ===== Navbar ===== */
-.navbar {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* ---------- Base ---------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg,var(--bg), #eef2ff 60%);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:2.25rem;
+  display:flex;
+  justify-content:center;
+  font-size:15px;
 }
 
-.navbar-brand {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+/* ---------- Layout container ---------- */
+.app{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:1.25rem;
+  align-items:start;
 }
 
-/* ===== Cards ===== */
-.card {
-    border: none;
-    border-radius: 8px;
-    overflow: hidden;
+/* For single-column pages (login/register) */
+.center-card{
+  margin:0 auto;
+  max-width:480px;
+  width:100%;
 }
 
-.card-header {
-    font-weight: 500;
-    font-size: 1.1rem;
+/* ---------- Card ---------- */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:1.25rem;
 }
 
-/* ===== Buttons ===== */
-.btn {
-    border-radius: 6px;
-    font-weight: 500;
+/* ---------- Header / Nav ---------- */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:0.5rem;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  font-weight:700;
+  font-size:1.05rem;
+}
+.brand .logo{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:inline-grid;
+  place-items:center;
+  color:white;
+  font-weight:700;
+  box-shadow:0 6px 18px rgba(37,99,235,0.14);
 }
 
-.btn-primary {
-    background-color: #0066ff;
-    border: none;
+/* ---------- Form ---------- */
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+.form .row{display:flex; gap:0.75rem;}
+.form label{
+  font-size:0.85rem;
+  color:var(--muted);
+  margin-bottom:0.25rem;
+}
+.input, .select, textarea{
+  width:100%;
+  padding:0.7rem 0.85rem;
+  border-radius:10px;
+  border:1px solid #e6e9ef;
+  background:transparent;
+  outline:none;
+  font-size:0.95rem;
+  transition:box-shadow .15s, border-color .12s;
+}
+.input:focus, textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 6px 18px rgba(37,99,235,0.06);
 }
 
-.btn-primary:hover {
-    background-color: #004ee0;
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.6rem;
+  padding:0.7rem 0.95rem;
+  border-radius:10px;
+  border:0;
+  cursor:pointer;
+  font-weight:600;
+  font-size:0.95rem;
+  transition:transform .08s ease, box-shadow .08s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;
+  box-shadow:0 8px 28px rgba(37,99,235,0.12);
+}
+.btn-ghost{
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(37,99,235,0.12);
 }
 
-.btn-danger {
-    background-color: #ff3b3b;
-    border: none;
+/* small link-style button */
+.btn-link{
+  background:transparent;
+  color:var(--accent);
+  padding:0;
+  height:auto;
+  font-weight:600;
 }
 
-.btn-danger:hover {
-    background-color: #d22f2f;
+/* ---------- Alerts ---------- */
+.alert{
+  padding:0.6rem 0.85rem;
+  border-radius:8px;
+  font-size:0.9rem;
+  margin-bottom:0.75rem;
+}
+.alert-success{background:#ecfdf5;color:var(--success);border:1px solid rgba(16,185,129,0.08)}
+.alert-error{background:#fff1f2;color:var(--danger);border:1px solid rgba(239,68,68,0.06)}
+
+/* ---------- Dashboard sidebar / quick
+links ---------- */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:0.8rem;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  padding:0.7rem;
+  border-radius:10px;
+  color:#0f172a;
+  text-decoration:none;
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+  border:1px solid rgba(15,23,42,0.03);
+}
+.nav-item:hover{box-shadow:var(--shadow)}
+
+/* ---------- Table (view items) ---------- */
+.table-wrap{
+  overflow:auto;
+  border-radius:10px;
+  border:1px solid #eef2ff;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:640px;
+}
+thead th{
+  text-align:left;
+  padding:0.9rem;
+  font-size:0.85rem;
+  color:var(--muted);
+  background:linear-gradient(180deg,#fbfdff, #f8fbff);
+  border-bottom:1px solid #eef2ff;
+}
+tbody td{
+  padding:0.85rem;
+  border-bottom:1px dashed #f1f5f9;
+  vertical-align:middle;
+}
+tbody tr:hover{background:linear-gradient(90deg, #ffffff, #fbfbff)}
+
+/* badges */
+.badge{
+  display:inline-block;
+  padding:0.28rem 0.5rem;
+  border-radius:999px;
+  font-size:0.8rem;
+  font-weight:600;
+  color:#0f172a;
+  background:#f1f5f9;
 }
 
-/* ===== Form Controls ===== */
-.form-control {
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    transition: border-color 0.2s, box-shadow 0.2s;
+/* action icons/buttons in table */
+.action{
+  display:inline-flex;
+  gap:0.4rem;
+}
+.small{
+  font-size:0.85rem;
+  padding:0.4rem 0.55rem;
+  border-radius:8px;
+  background:transparent;
+  border:1px solid rgba(15,23,42,0.04);
 }
 
-.form-control:focus {
-    border-color: #0066ff;
-    box-shadow: 0 0 0 0.2rem rgba(0,102,255,0.1);
+/* ---------- Footer ---------- */
+.footer {
+  margin-top:1rem;
+  font-size:0.85rem;
+  color:var(--muted);
+  text-align:center;
 }
 
-/* ===== Tables ===== */
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px;
-    text-align: center;
-}
-
-td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
-tr:hover {
-    background-color: #f1f5ff;
-}
-
-/* ===== Alerts ===== */
-.alert {
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-/* ===== Footer (Optional) ===== */
-footer {
-    text-align: center;
-    padding: 15px;
-    color: #777;
-    margin-top: 50px;
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .app{grid-template-columns:1fr; padding:1rem}
+  .sidebar{flex-direction:row; gap:0.6rem; overflow:auto}
+  .center-card{max-width:100%}
+  table{min-width:540px}
 }
