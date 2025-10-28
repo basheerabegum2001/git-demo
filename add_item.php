@@ -47,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <br>
-<a href="view_items.php"> View All Stock</a>
-
+<button type="submit"><a href="view_items.php"> View All Stock</a></button>
+    
 </body>
 </html>
 
