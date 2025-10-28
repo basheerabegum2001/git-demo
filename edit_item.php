@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="number" name="quantity" value="<?= $item['quantity']; ?>" required><br>
     <input type="number" step="0.01" name="price" value="<?= $item['price']; ?>" required><br>
     <button type="submit" name="update">Update</button>
-    <a href="view.php"><button type="button">Cancel</button></a>
+    <a href="view_items.php"><button type="button">Cancel</button></a>
 </form>
 
 </body>
