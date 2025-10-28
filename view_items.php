@@ -23,8 +23,8 @@ $result = $conn->query("SELECT * FROM items");
     <td><?= $row['quantity'] ?></td>
     <td><?= $row['price'] ?></td>
     <td>
-        <a href="edit_item.php?id=<?= $row['id'] ?>">Edit</a> |
-        <a href="delete_item.php?id=<?= $row['id'] ?>" onclick="return confirm('Delete this item?')">Delete</a>
+        <button type="submit"><a href="edit_item.php?id=<?= $row['id'] ?>">Edit</a> </button>
+        <button type="submit"><a href="delete_item.php?id=<?= $row['id'] ?>" onclick="return confirm('Delete this item?')">Delete</a></button>
     </td>
 </tr>
 <?php endwhile; ?>
