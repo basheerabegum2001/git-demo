@@ -41,22 +41,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 8px 5px;
             margin-top: 10px;
         }
+        .btn-reg {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 8px;
+        text-decoration: none;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background 0.3s;
+        }
+        .btn-reg {
+        background-color: blue;
+        }
+
+        .btn-reg:hover {
+        background-color: blue;
+        }
     </style>
 
 </head>
 <body>
 <h2>Register</h2>
-<div  class="container">
-<form method="POST" action="">
+<div class="container">
+  <form method="POST">
     <input type="text" name="username" placeholder="Username" required><br><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit" name="register">Register</button>
-</form>
+    <button type="submit" name="register" class="btn-reg">Register</button>
+  </form>
 
-<p>Already have an account? <a href="login.php">Login</a></p>
+  <p>Already have an account? <a href="login.php">Login here</a></p>
+
+  <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 </div>
-
-<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-
 </body>
 </html>
+
