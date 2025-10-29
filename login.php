@@ -50,6 +50,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 8px 5px;
             margin-top: 10px;
         }
+        .btn-log {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 8px;
+        text-decoration: none;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background 0.3s;
+        }
+        .btn-log {
+        background-color: blue;
+        }
+        .btn-log:hover {
+        background-color: blue;
+        }
+
     </style>
 </head>
 <body>
@@ -59,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form method="POST" action="">
     <input type="text" name="username" placeholder="Username" required><br><br>
     <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit" name="login">Login</button>
+    <button type="submit" name="login" class="btn-log">Login</button>
 </form>
 
 <p>Don't have an account? <a href="register.php">Register</a></p>
@@ -69,3 +86,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
+
