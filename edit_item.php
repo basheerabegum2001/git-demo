@@ -28,51 +28,116 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Edit Stock</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        body { text-align: center; font-family: Arial; margin-top: 120px; }
-        input[type="text"], input[type="number"] { padding: 8px; width: 200px; margin: 7px; }
-        button { padding: 8px 15px; margin: 10px;} h2{font-size:35px; color: crimson;} 
-        .btn-update, .btn-cancel {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 8px;
-        text-decoration: none;
-        color: white;
-        border-radius: 4px;
-        font-size: 14px;
-        transition: background 0.3s;
-        }
-        .btn-update {
-        background-color: #28a745;
-        }
+/* ===========================
+   Edit Stock Item Page
+=========================== */
 
-        .btn-update:hover {
-        background-color: #218838;
-        }
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .btn-cancel {
-        background-color: #dc3545;
-        }
+/* Edit form container */
+.edit-container {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
 
-        .btn-cancel:hover {
-        background-color: #c82333;
-        }
+.edit-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+/* Input styling */
+.edit-container input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.edit-container input:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+/* Button group */
+.btn-group-edit {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Update button */
+.btn-update {
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s ease, transform 0.2s ease;
+}
+
+.btn-update:hover {
+    background: #1e8449;
+    transform: scale(1.05);
+}
+
+/* Cancel button */
+.btn-cancel {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition:  0.3s ease, transform 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
     </style>
 </head>
 <body>
-    <h2><b>✏️ Edit Stock Item</b></h2>
 
-<form method="POST" action="">
-    <input type="hidden" name="id" value="<?= $item['id']; ?>">
-    <input type="text" name="name" value="<?= htmlspecialchars($item['name']); ?>" required><br>
-    <input type="number" name="quantity" value="<?= $item['quantity']; ?>" required><br>
-    <input type="number" step="0.01" name="price" value="<?= $item['price']; ?>" required><br>
-    <button type="submit" class="btn-update">Update</button>
-    <a href="view_items.php"><button type="button" class="btn-cancel">Cancel</button></a>
-</form>
+<div class="edit-container">
+    <h2>✏️ Edit Stock Item</h2>
 
+    <form method="POST" action="">
+        <input type="hidden" name="id" value="<?= $item['id']; ?>">
+
+        <input type="text" name="name" value="<?= htmlspecialchars($item['name']); ?>" placeholder="Item Name" required>
+        <input type="number" name="quantity" value="<?= $item['quantity']; ?>" placeholder="Quantity" required>
+        <input type="number" step="0.01" name="price" value="<?= $item['price']; ?>" placeholder="Price" required>
+
+        <div class="btn-group-edit">
+            <button type="submit" class="btn-update">Update</button>
+            <a href="view_items.php" class="btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
