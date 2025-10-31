@@ -14,147 +14,181 @@ $result = $conn->query("SELECT * FROM items");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h2{
-            text-align: center;
-            font-size: 55px;
-            color: maroon;
-        }
-        .logbtn{
-            margin-left: 1330px;
-            padding: 8px;
-        }
-        table {
-        border-collapse: collapse;
-        width: 90%;
-        margin: 30px auto;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #fff;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        overflow: hidden;
-        }
+/* View Items Page */
 
-        th, td {
-        padding: 12px 16px;
-        text-align: left;
-        }
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 
-        th {
-        background-color: #007BFF;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-size: 14px;
-        }
+/* Logout button (top-right) */
+.btn-out {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:  0.3s ease;
+}
 
-        tr:nth-child(even) {
-        background-color: #f9f9f9;
-        }
+.btn-out a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
 
-        tr:hover {
-        background-color: #f1f7ff;
-        }
+.btn-out:hover {
+    background: #c0392b;
+}
 
-        td {
-        border-bottom: 1px solid #ddd;
-        font-size: 15px;
-        }
+/* Container for the stock table */
+.view-container {
+    background: #fff;
+    max-width: 900px;
+    margin: 100px auto 50px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
 
-    /* ===== BUTTON STYLING ===== */
-    .btn-edit, .btn-delete {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 8px;
-        text-decoration: none;
-        color: white;
-        border-radius: 4px;
-        font-size: 14px;
-        transition: background 0.3s;
-    }
+.view-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
 
-    .btn-edit {
-        background-color: #28a745;
-    }
+/* Table styling */
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    text-align: center;
+}
 
-    .btn-edit:hover {
-        background-color: #218838;
-    }
+.stock-table thead {
+    background: #2575fc;
+    color: #fff;
+}
 
-    .btn-delete {
-        background-color: #dc3545;
-    }
+.stock-table th, .stock-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
 
-    .btn-delete:hover {
-        background-color: #c82333;
-    }
-    .logbtn {
-        background-color:rgb(255, 0, 0) ;
-        margin-left: 1350px;
-        padding: 8px;
-    }
+.stock-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
 
-    .logbtn:hover {
-        background-color:rgba(250, 235, 215, 0.89) ;
-    }
+.stock-table tr:hover {
+    background-color: #eef4ff;
+}
 
-    /* ===== FORM INLINE FIX ===== */
-    td form {
-        display: inline;
-    }
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-    body {
-        background-color: #f4f6f8;
-    }
+.btn-edit, .btn-delete {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    transition:0.3s ease;
+}
 
-    h1 {
-        text-align: center;
-        margin-top: 20px;
-        font-weight: 500;
-        color: #333;
-    }
-    .btn-dash {
-        background-color:antiquewhite ;
-        margin-left: 1250px;
-    }
+.btn-edit {
+    background: #f1c40f;
+}
 
-    .btn-dash:hover {
-        background-color: white ;
-    }
+.btn-edit:hover {
+    background: #d4ac0d;
+}
 
+.btn-delete {
+    background: #e74c3c;
+    border: none;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* Back to Dashboard button */
+.btn-dash {
+    display: block;
+    margin: 30px auto 0;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition:  0.3s ease;
+}
+
+.btn-dash a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-dash:hover {
+    background: #1e8449;
+}
 </style>
 </head>
 <body>
 
-    <button type="submit" class="logbtn"><a href="logout.php">Logout</a></button>
+<button class="btn-out"><a href="logout.php">Logout</a></button>
 
+<div class="view-container">
     <h2>Stock List</h2>
-<table border="1">
-<tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Quantity</th>
-    <th>Price</th>
-    <th>Actions</th>
-</tr>
 
-<?php while($row = $result->fetch_assoc()): ?>
-<tr>
-    <td><?= $row['id'] ?></td>
-    <td><?= $row['name'] ?></td>
-    <td><?= $row['quantity'] ?></td>
-    <td><?= $row['price'] ?></td>
+    <table class="stock-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price ($)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= htmlspecialchars($row['id']); ?></td>
+                <td><?= htmlspecialchars($row['name']); ?></td>
+                <td><?= htmlspecialchars($row['quantity']); ?></td>
+                <td><?= htmlspecialchars(number_format($row['price'], 2)); ?></td>
+                <td class="action-buttons">
+                    <a class="btn-edit" href="edit_item.php?id=<?= $row['id'] ?>">Edit</a>
 
-    <td>
-       <a class="btn-edit" href="edit_item.php?id=<?= $row['id'] ?>">Edit</a>     
+                    <form action="delete_item.php" method="POST" onsubmit="return confirm('Delete this item?')" style="display:inline;">
+                        <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
 
-       <form action="delete_item.php" method="POST" onsubmit="return confirm('Delete this item?')">
-          <input type="hidden" name="id" value="<?= $row['id'] ?>">
-        <button type="submit" class="btn-delete">Delete</button>
-       </form>    
-    </td>
-</tr>
-<?php endwhile; ?>
-</table> 
-    <button type="submit"  class="btn-dash" ><a href="dashboard.php">Back to Dashboard</a></button>
-</body>
-</html>
+    <button class="btn-dash"><a href="dashboard.php">Back to Dashboard</a></button>
+</div>
+
+</body></html>
