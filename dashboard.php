@@ -14,59 +14,107 @@ if (!isset($_SESSION['username'])) {
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .welcome{
-            margin: 30px;
-            text-align: center; 
-            color: purple;
-            font-size: 40px;
-        }
-        .btn-additem, .btn-view {
-        display: inline-block;
-        padding: 6px 12px;
-        margin: 8px;
-        text-decoration: none;
-        color: white;
-        border-radius: 4px;
-        font-size: 14px;
-        transition: background 0.3s;
-        }
-        .btn-additem {
-        background-color:antiquewhite ;
-        }
+/* Dashboard Page Styling */
 
-        .btn-additem:hover {
-        background-color:white ;
-        }
-        .btn-view {
-        background-color:antiquewhite ;
-        }
+/* Top bar */
+.top-bar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
 
-        .btn-view:hover {
-        background-color:white;
-        }
-        .logbtn {
-        background-color:rgb(255, 0, 0) ;
-        margin-left: 1350px;
-        padding: 8px;
-        }
+.btn-out {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-        .logbtn:hover {
-        background-color:rgba(250, 235, 215, 0.89) ;
-        }
+.btn-out a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
 
+.btn-out:hover {
+    background: #c0392b;
+}
+
+/* Welcome section */
+.welcome {
+    text-align: center;
+    margin-top: 150px;
+    color: #333;
+}
+
+.welcome h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+/* Button group */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Add Item & View Item buttons */
+.btn-additem,
+.btn-view {
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, 0.3s ease;
+}
+
+.btn-additem {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-view {
+    background: #3498db;
+    color: white;
+}
+
+.btn-additem:hover {
+    background: #1e8449;
+    transform: scale(1.05);
+}
+
+.btn-view:hover {
+    background: #2e86c1;
+    transform: scale(1.05);
+}
+
+.btn-additem a,
+.btn-view a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
     </style>
 </head>
 <body>
-    <div>
-       <button type="submit" class="logbtn"><a href="logout.php">Logout</a></button>
-    </div>
 
-<div class = "welcome">
- <h1 style="margin:80px 30px";>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
-
-<button type="submit" class="btn-additem" style="margin-left:20px";><a href="add_item.php">Add Item</a> </button> 
-<button type="submit"  class="btn-view" style="margin-left:40px";><a href="view_items.php">View Items</a>  </button>
+<div class="top-bar">
+    <button class="btn-out"><a href="logout.php">Logout</a></button>
 </div>
 
-</body>
-</html>
+<div class="welcome">
+    <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+
+    <div class="btn-group">
+        <button class="btn-additem"><a href="add_item.php">Add Item</a></button> 
+        <button class="btn-view"><a href="view_items.php">View Items</a></button>
+    </div>
+</div>
+
+</body></html>
