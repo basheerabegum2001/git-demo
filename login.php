@@ -32,40 +32,139 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        body{
-            margin: 45px;
-            font-family: Arial;
-        }
-        .container{
-            padding: 20px;
-            width: 300px;
-            border: 1px solid black;
-        }
-        input{
-            margin: 8px;
-            padding: 5px;
-            width: 200px;
-        }
-        button{
-            padding: 8px 5px;
-            margin-top: 10px;
-        }
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login container */
+.login-container {
+    background: #fff;
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
+/* Login button */
+.btn-log {
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-log:hover {
+    background: #1a5ed9;
+}
+
+/* Error message */
+.error {
+    color: #d63031;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Register text */
+.register-text {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
-<h2>Login</h2>
-  <div class="container hidden">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<form method="POST" action="">
-    <input type="text" name="username" placeholder="Username" required><br><br>
-    <input type="password" name="password" placeholder="Password" required><br><br>
-    <button type="submit" name="login">Login</button>
-</form>
+<div class="login-container">
+    <h2>Login</h2>
 
-<p>Don't have an account? <a href="register.php">Register</a></p>
+    <form method="POST" action="">
+        <div class="input-group">
+            <input type="text" name="username" id="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit" name="login" class="btn-log">Login</button>
+
+        <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>
+    </form>
+
+    <p class="register-text">Don't have an account? <a href="register.php">Register</a></p>
 </div>
-
-<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 
 </body>
 </html>
+
